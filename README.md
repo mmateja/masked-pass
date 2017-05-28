@@ -2,6 +2,8 @@
 
 Small command-line application that selects specific characters from your password without printing it to the screen.
 
+![Screenshot](https://github.com/mmateja/masked-pass/blob/master/screenshot.jpg)
+
 ### Installation
 
 Script requires Ruby.

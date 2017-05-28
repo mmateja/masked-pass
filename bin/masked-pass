@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+require 'io/console'
+
+puts 'Character indexes:'
+indexes = STDIN.gets.chomp.split(/\s|,/).map(&:to_i)
+
+puts 'Now paste the password'
+pass = STDIN.noecho(&:gets).chomp
+
+puts 'Your characters:'
+puts indexes.map { |i| pass[i-1] }.join(' ')

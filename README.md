@@ -7,9 +7,18 @@ Simple command-line application that selects specific password characters withou
 
 ## Installation
 
-Script requires Ruby.
+You can either install it from RubyGems or build it manually. You need to have Ruby installed anyway.
 
+### RubyGems
+
+```bash
+gem install masked-pass
 ```
+
+### Build it on our own
+
+Download this repository and execute following commands inside:
+```bash
 gem build masked-pass.gemspec
 gem install masked-pass-1.1.0.gem
 ```
@@ -17,7 +26,7 @@ gem install masked-pass-1.1.0.gem
 
 ## Usage
 
-```
+```bash
 masked-pass
 ```
 

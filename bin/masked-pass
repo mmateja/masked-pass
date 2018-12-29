@@ -9,4 +9,7 @@ puts 'Now paste the password'
 pass = STDIN.noecho(&:gets).chomp
 
 puts 'Your characters:'
-puts indexes.map { |i| pass[i-1] }.join(' ')
+chars_string = indexes.map { |i| pass[i-1] }.join(' ')
+print chars_string
+sleep 10
+puts "\r#{'*' * chars_string.size}"

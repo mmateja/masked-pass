@@ -26,8 +26,13 @@ gem install masked-pass-1.2.0.gem
 
 ## Usage
 
-```bash
-masked-pass
+```
+masked-pass [options]
+
+Options:
+    -v, --version       Show version and exit
+    -h, --help          Show help message and exit
+    -c, --clipboard     Use clipboard for input and output (MacOS only)
 ```
 
 

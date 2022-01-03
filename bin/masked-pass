@@ -2,14 +2,50 @@
 
 require 'io/console'
 
-puts 'Character indexes:'
-indexes = STDIN.gets.chomp.split(/\s|,/).map(&:to_i)
+def read_indexes
+    STDIN.gets.chomp.split(/\s|,/).map(&:to_i)
+end
 
-puts 'Now paste the password'
-pass = STDIN.noecho(&:gets).chomp
+def masked_chars(pass, indexes)
+    indexes.map { |i| pass[i-1] }
+end
 
-puts 'Your characters:'
-chars_string = indexes.map { |i| pass[i-1] }.join(' ')
-print chars_string
-sleep 10
-puts "\r#{'*' * chars_string.size}"
+if ARGV.include?('-v') || ARGV.include?('--version')
+    version = File.read(File.expand_path('../VERSION', File.dirname(__FILE__)))
+    puts "masked-pass #{version}"
+    exit
+end
+
+if ARGV.include?('-h') || ARGV.include?('--help')
+    puts <<~HELP
+        Usage:
+            masked-pass [options]
+
+        Options:
+            -v, --version       Show version and exit
+            -h, --help          Show help message and exit
+            -c, --clipboard     Use clipboard for input and output (MacOS only)
+    HELP
+    exit
+end
+
+if ARGV.include?('-c') || ARGV.include?('--clipboard')
+    puts 'Copy password to clipboard then type character indexes:'
+    indexes = read_indexes
+    pass = `pbpaste`
+    chars = masked_chars(pass, indexes)
+    chars_string = chars.join
+    system("echo '#{chars_string}\\c' | pbcopy")
+    puts 'Characters copied to clipboard'
+else
+    puts 'Character indexes:'
+    indexes = read_indexes
+    puts 'Now paste the password'
+    pass = STDIN.noecho(&:gets).chomp
+    puts 'Your characters:'
+    chars = masked_chars(pass, indexes)
+    chars_string = chars.join(' ')
+    print chars_string
+    sleep 10
+    puts "\r#{'*' * chars_string.size}"
+end

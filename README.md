@@ -20,7 +20,7 @@ gem install masked-pass
 Download this repository and execute following commands inside:
 ```bash
 gem build masked-pass.gemspec
-gem install masked-pass-1.1.0.gem
+gem install masked-pass-1.2.0.gem
 ```
 
 
@@ -32,6 +32,10 @@ masked-pass
 
 
 ## Changelog
+
+### 1.2.0
+
+* Add clipboard mode (`-c`).
 
 ### 1.1.0
 

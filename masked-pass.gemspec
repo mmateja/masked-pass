@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'masked-pass'
-  s.version     = '1.1.0'
+  s.version     = File.read('VERSION')
   s.date        = '2018-12-29'
   s.summary     = 'Small program helping with masked passwords'
   s.description = 'Simple command-line application that selects specific password characters without displaying full password on the screen'
@@ -9,5 +9,5 @@ Gem::Specification.new do |s|
   s.homepage    = 'https://github.com/mmateja/masked-pass'
   s.license     = 'ISC'
   s.executables = ['masked-pass']
+  s.files       = ['VERSION']
 end
-
